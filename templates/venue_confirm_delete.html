@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Venue</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Custom CSS for additional styling */
+        body {
+            background: linear-gradient(135deg, #A7C7E7, #F9D1D1); /* Light pastel gradient */
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            padding: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2c3e50; /* Darker title color */
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn {
+            padding: 12px 18px;
+            font-size: 16px;
+            text-decoration: none;
+            border-radius: 8px;
+            width: 100%;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            display: inline-block;
+        }
+
+        .btn-danger {
+            background-color: #dc2626; /* Red color for delete */
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .btn-danger:hover {
+            background-color: #b91c1c;
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            background-color: #6b7280; /* Grey color for cancel */
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #4b5563;
+            transform: translateY(-3px);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .container {
+                padding: 20px;
+                max-width: 320px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Are you sure you want to delete "{{ venue.name }}"?</h2>
+
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Confirm</button>
+            <a href="{% url 'venue_list' %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+
+</body>
+</html>
